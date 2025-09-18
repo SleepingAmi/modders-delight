@@ -1,0 +1,84 @@
+body {
+    background: black;
+    color: white;
+    font-family: monospace;
+    background-image: repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 3px);
+    padding-top: 6rem;
+    line-height: 1.5;
+}
+
+.hr {
+    background: black;
+    background-image: repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 3px);
+    border-bottom: 1px solid rgb(2, 240, 2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+#title {
+    text-align: center;
+    margin-top: 2.5rem;
+    animation: crtFlicker 0.8s steps(4, end) 2;
+}
+
+.blink {
+    animation: blink 1.2s step-start infinite;
+}
+
+.notice {
+    border-radius: 6px;
+    border-left: 2px solid rgb(2, 240, 2);
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.section {
+    margin-bottom: 2rem;
+}
+
+ol, ul {
+    padding-left: 1.5rem;
+}
+
+.author-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid rgb(2, 240, 2);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+    background-color: rgba(255 255 255 0.8);
+}
+
+.author-avatar {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgb(2, 240, 2);
+    object-fit: cover;
+}
+
+a {
+    color: #bbb;
+    text-decoration: underline;
+    text-underline-offset: 2px;/* slight gap for a crisp look */
+}
+
+@keyframes crtFlicker {
+    0% { opacity: 0.8; filter: none; }
+    5% { opacity: 0.3; filter: hue-rotate(10deg); }
+    10% { opacity: 1; filter: none; }
+    15% { opacity: 0.25; filter: hue-rotate(10deg); }
+    20% { opacity: 0.1; filter: hue-rotate(10deg); }
+    100% { opacity: 1; filter: none; }
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.1; }
+    100% { opacity: 1; }
+}

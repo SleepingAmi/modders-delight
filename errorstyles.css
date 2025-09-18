@@ -1,0 +1,62 @@
+body {
+    background: black;
+    color: white;
+    font-family: monospace;
+    background-image: repeating-linear-gradient(to bottom, rgba(255 255 255 0.03), rgba(255 255 255 0.03) 1px, transparent 1px, transparent 3px);
+    line-height: 1.5;
+}
+
+a {
+    color: #bbb;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.content h1 {
+    margin-bottom: 16px;
+    color: #bbb;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.not-found {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 8px;
+    padding-top: 64px;
+}
+
+.not-found > :first-child {
+    border-right: 1px #bbb solid;
+    display: inline-block;
+    font-size: 36px;
+    font-weight: bold;
+    height: 54px;
+    margin-bottom: 12px;
+    margin-right: 22px;
+    padding-right: 22px;
+    padding-top: 6px;
+}
+
+.not-found > :last-child {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.footer {
+  text-align: left;
+  padding-top: 64px;
+  color: #d6d6d6;
+}
+
+@media (max-width: 640px) {
+    #fiveserver-info-wrapper {
+        max-width: 98%;
+    }
+    #fiveserver-info {
+        border-radius: 0px;
+    }      
+}
+
