@@ -68,6 +68,14 @@ a {
     text-underline-offset: 2px;/* slight gap for a crisp look */
 }
 
+.spin {
+    display: inline-block;
+    vertical-align: middle;
+    transform-origin: center center;
+    text-align: center;
+    animation: spin 3.5s linear infinite;
+}
+
 @keyframes crtFlicker {
     0% { opacity: 0.8; filter: none; }
     5% { opacity: 0.3; filter: hue-rotate(10deg); }
@@ -75,6 +83,11 @@ a {
     15% { opacity: 0.25; filter: hue-rotate(10deg); }
     20% { opacity: 0.1; filter: hue-rotate(10deg); }
     100% { opacity: 1; filter: none; }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @keyframes blink {
