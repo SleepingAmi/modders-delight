@@ -21,7 +21,7 @@ body {
 #title {
     text-align: center;
     margin-top: 2.5rem;
-    animation: crtFlicker 0.8s steps(4, end) 2;
+    animation: crtFlicker 0.8s steps(4, end) 1;
 }
 
 .blink {
@@ -74,6 +74,18 @@ a {
     transform-origin: center center;
     text-align: center;
     animation: spin 3.5s linear infinite;
+}
+
+.crt-footer a {
+    text-decoration: none;
+    transition: color 0.2 ease-out;
+}
+
+.crt-footer a:hover {
+    text-decoration: underline;
+    color: #fff;
+    text-shadow: 0 0 5px #bbb, 0 0 10px #bbb;
+    animation: crtFlicker 0.18s 1;
 }
 
 @keyframes crtFlicker {

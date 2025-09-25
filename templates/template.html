@@ -5,9 +5,16 @@ layout: none
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modders Delight (template)</title>
-    <link rel="stylesheet" href="../theme.css">
+    <meta property="og:title" content="Template | Modders Delight">
+    <meta property="og:description" content="Modders Delight Community Template">
+    <meta property="og:image" content="https://sleepingami.github.io/modders-delight/assets/modders-delight-logo.png">
+    <link rel="icon" type="image/png" href="https://sleepingami.github.io/modders-delight/assets/modders-delight-logo.png">
+    <meta name="description" content="Modders Delight - Documenting the fixes we need. Giving back the right to repair.">
+    <meta property="og:site_name" content="Modders Delight">
+    <link rel="stylesheet" href="theme.css">
 </head>
 <body>
     
@@ -22,10 +29,55 @@ layout: none
                 <span id="author-role">Author</span>
             </div>
         </div>
+        <h2>Mod Template<span class="blink">▏</span></h2>
         <div class="notice">
-            <p>This shit's <a href="http://about:blank">fire</a><span class="blink">▏</span></p>
+            <p>Quick formatting rundown:</p>
+            <p>This is a <a href="http://about:blank">link</a>. This span blinks -><span class="blink">▏</span> - and this text is in a div.notice (div with a notice class)</p>
+            <p>And, this is where you'd usually add a warranty disclaimer.</p>
+        </div>
+        <p>A good mod should have tool sections (if applicable), sourced parts list (if applicable) with alternate sources (for extra creds), and detailed instructions with images.</p>
+        <p>But, in all honesty, we know this isn't a viable way to make a mod guide. That's why we're working on guidelines for community mods.</p>
+        <p>Meanwhile, here's the template:</p>
+        <div class="section tools">
+            <h2>Tools Required</h2>
+            <ul>
+                <li>Example Tools</li>
+                <li>If none, we use "Not Applicable"</li>
+            </ul>
+        </div>
+        <div class="section materials">
+            <h2>Materials Used</h2>
+            <ul>
+                <li>Materials is an umbrella term for additional materials such as random screws you found lying around</li>
+                <li>Or even the type of filament you used in your 3D printer</li>
+                <li>If none, we use "Not Applicable"</li>
+            </ul>
+        </div>
+        <div class="section sourcing">
+            <h2>Parts Sourcing</h2>
+            <ul>
+                <li>We all like a mod guide to list the specific part the mod writer used</li>
+                <li>We all like an alternative or two to list cheaper alternatives that are also compatible or that ship to more countries</li>
+                <li>If none, we use "Not Applicable"</li>
+            </ul>
+        </div>
+        <div class="section steps">
+            <h2>Step-by-Step Instructions</h2>
+            <ol>
+                <li>This is where you go into as much detail as possible describing the full process of <i>how</i> you did what you did</li>
+                <li>Feel free to use as many steps as necessary, and add small disclaimers for important things</li>
+                <div class="notice">
+                    <p>Like this:</p>
+                    <p>"Make sure to take pictures of the disassembly process. It makes reassembly easier"</p>
+                    <p>or:</p>
+                    <p>"Make sure to write down what steps you performed in the case you want to undo this mod"</p>
+                </div>
+            </ol>
         </div>
     </main>
+    
+    {% include footer.html %}
+
     <!--
         OPTIONAL
         Optional script to fetch user data from Hydraulisc; Follows Hydraulisc API Spec (https://about.hydraulisc.net/docs/hydraulisc/api/#fetching-user-data)
