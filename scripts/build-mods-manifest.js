@@ -48,8 +48,7 @@ function readPosts() {
       title: meta.title || slug,
       date: meta.date || null,
       tags: Array.isArray(meta.tags) ? meta.tags : (meta.tags ? [meta.tags] : []),
-      url,
-      excerpt: (meta.excerpt || excerpt || '').toString().trim()
+      url
     };
   }).filter(Boolean); // drop nulls from failed reads
 

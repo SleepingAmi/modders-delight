@@ -61,11 +61,11 @@ layout: none
                 const date = post.date ? `<time datetime="${escapeHtml(post.date)}">${escapeHtml(post.date)}</time>` : '';
                 const excerpt = escapeHtml(post.excerpt || '');
                 return `
-                <article class="post">
-                    <h3><a href="${url}">${title}</a></h3>
-                    <div class="meta">${date}</div>
-                    <p>${excerpt}</p>
-                </article>
+                <a href="/modders-delight${url}">
+                    <article class="post">
+                        <h3>${title}</h3>
+                    </article>
+                </a>
                 `;
             }).join('\n');
 
