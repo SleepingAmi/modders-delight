@@ -1,0 +1,32 @@
+name: Build mods manifest
+
+on:
+  push:
+    branches: [ main ]  # adjust branch(es)
+
+jobs:
+  build-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18' 
+
+      - name: Install dependencies
+        run: npm install gray-matter
+
+      - name: Run manifest builder
+        run: node scripts/build-mods-manifest.js
+
+      - name: Commit generated manifest
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore: update mods index.json [skip ci]"
+          file_pattern: 'mods/index.json'
+          branch: ${{ github.ref_name }}
