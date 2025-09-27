@@ -58,7 +58,6 @@ layout: none
             postsRef.innerHTML = data.map(post => {
                 const title = escapeHtml(post.title || post.id || 'Untitled');
                 const url = post.url || ('/mods/' + encodeURIComponent(post.id || ''));
-                const date = post.date ? `<time datetime="${escapeHtml(post.date)}">${escapeHtml(post.date)}</time>` : '';
                 const excerpt = escapeHtml(post.excerpt || '');
                 return `
                 <a href="/modders-delight${url}">

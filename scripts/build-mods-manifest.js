@@ -7,6 +7,11 @@ const POSTS_DIR = path.join(process.cwd(), 'mods');
 const OUT_DIR = POSTS_DIR; // output published location
 const OUT_FILE = path.join(OUT_DIR, 'index.json');
 
+// Helper function to sanitize title's
+function hyphensToSpacesNormalized(s) {
+  return String(s).replace(/-+/g, ' ').trim();
+}
+
 function readPosts() {
   if (!fs.existsSync(POSTS_DIR)) return [];
 
@@ -45,7 +50,7 @@ function readPosts() {
 
     return {
       id: meta.id || slug,
-      title: meta.title || slug,
+      title: hyphensToSpacesNormalized(meta.title || slug),
       date: meta.date || null,
       tags: Array.isArray(meta.tags) ? meta.tags : (meta.tags ? [meta.tags] : []),
       url
