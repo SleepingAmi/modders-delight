@@ -88,6 +88,11 @@ a {
     animation: crtFlicker 0.18s 1;
 }
 
+.image {
+    max-width: 55vw;
+    /*  There is no actual size calculation performed.  */
+}
+
 @keyframes crtFlicker {
     0% { opacity: 0.8; filter: none; }
     5% { opacity: 0.3; filter: hue-rotate(10deg); }
