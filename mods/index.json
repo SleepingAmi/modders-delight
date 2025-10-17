@@ -12,5 +12,12 @@
     "date": null,
     "tags": [],
     "url": "/mods/playstation5-trigger"
+  },
+  {
+    "id": "welcome",
+    "title": "welcome",
+    "date": "17/10/2025",
+    "tags": [],
+    "url": "/mods/welcome"
   }
 ]
