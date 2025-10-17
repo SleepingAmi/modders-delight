@@ -12,7 +12,28 @@ function hyphensToSpacesNormalized(s) {
   return String(s).replace(/-+/g, ' ').trim();
 }
 
-function readPosts() {
+// Helper: format date as dd/mm/yyyy
+function formatDate(d) {
+  const date = new Date(d);
+  return date.toLocaleDateString('en-GB'); // UK format = dd/mm/yyyy
+}
+
+function readExistingManifest() {
+  if (!fs.existsSync(OUT_FILE)) return {};
+  try {
+    const data = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
+    const map = {};
+    for (const item of data) {
+      map[item.id] = item;
+    }
+    return map;
+  } catch (err) {
+    console.warn(`⚠️ Could not read existing manifest: ${err.message}`);
+    return {};
+  }
+}
+
+function readPosts(existingMap = {}) {
   if (!fs.existsSync(POSTS_DIR)) return [];
 
   const files = fs.readdirSync(POSTS_DIR)
@@ -41,24 +62,26 @@ function readPosts() {
         console.error(`⚠️ Failed to parse frontmatter in ${filename}: ${err.message}`);
       }
     } else {
-      // For HTML or no-frontmatter: take first non-empty line as excerpt
       excerpt = raw.split('\n').find(l => l.trim()) || '';
     }
 
     const slug = filename.replace(/\.(md|markdown|html)$/i, '');
     const url = `/mods/${slug}`;
+    const id = meta.id || slug;
+
+    const existing = existingMap[id];
+    const date = existing ? existing.date : formatDate(meta.date || new Date());
 
     return {
-      id: meta.id || slug,
+      id,
       title: hyphensToSpacesNormalized(meta.title || slug),
-      date: meta.date || null,
+      date,
       tags: Array.isArray(meta.tags) ? meta.tags : (meta.tags ? [meta.tags] : []),
       url
     };
-  }).filter(Boolean); // drop nulls from failed reads
+  }).filter(Boolean);
 
   posts.sort((a, b) => a.id.localeCompare(b.id));
-
   return posts;
 }
 
@@ -79,7 +102,8 @@ function writeManifest(posts) {
 
 function main() {
   try {
-    const posts = readPosts();
+    const existingMap = readExistingManifest();
+    const posts = readPosts(existingMap);
     writeManifest(posts);
   } catch (err) {
     console.error(`❌ Unexpected error: ${err.message}`);
