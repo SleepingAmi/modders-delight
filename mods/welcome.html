@@ -3,9 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
+    <title>Modders Delight | Welcome</title>
+    <meta property="og:title" content="A short backstory - introduction | Modders Delight">
+    <meta property="og:description" content="A short backstory - Introduction to Modders Delight">
+    <meta property="og:image" content="https://sleepingami.github.io/modders-delight/assets/modders-delight-logo.png">
+    <link rel="icon" type="image/png" href="https://sleepingami.github.io/modders-delight/assets/modders-delight-logo.png">
+    <meta name="description" content="A short backstory - Introduction to Modders Delight - Documenting the fixes we need. Giving back the right to repair.">
+    <meta property="og:site_name" content="Modders Delight">
+    <link rel="stylesheet" href="https://sleepingami.github.io/modders-delight/theme.css">
 </head>
 <body>
     
+    {% include header.html %}
+    
+    <main>
+        <div class="author-box" id="author-box">
+            <img src="" alt="Author Avatar" class="author-avatar"></img>
+            <div>
+                <strong id="author-name">Loading <span class="spin">▏</span></strong>
+                <br>
+                <span id="author-role">Author</span>
+            </div>
+        </div>
+        <h2>Introduction<span class="blink">▏</span></h2>
+        <h3 style="color: gray;">No tools, materials, or parts sourcing required <span class="spin">:)</span></h3>
+        <div class="section steps">
+            <h2>Why mod with delight?</h2>
+            <p>One day, a friend asked me to look at their PlayStation 5 controller's L2; it was getting stuck down when pressing it.</p>
+            <p>I searched far and wide, and at the time, no documentation existed for the specific issue, or even a proper disasembly guide.</p>
+            <p>I grabbed my precision-set screwdrivers, went over to their house, and disasembled the controller in front of their eyes, no doubt voiding any warranty.</p>
+            <p>I took apart the intricate gear mechanism for the L2 trigger, compared them to the mounts of the opposing R2, and reassembled the gears, but placing one in reverse, causing the L2 trigger button to always rest at Top Dead Center (TDC).</p>
+            <p>Considering the PS5 was only available for sale (in the region, at least) for a short period of time prior, and that I had successfully created a temporary "fix", I decided to make a small site in basic HTML, call it Modders Delight, create a goofy CRT-inspired theme in some extremely crude CSS, and upload some small DIY fixes and goofy mods like the aforementioned PS5 controller L2 patch.</p>
+            <br>
+            <p><i>That</i> is what Modders Delight, therefore modding with delight, is all about.</p>
+            <p>A community get together, patching and fixing, small or large, irrelevant or not.</p>
+            <br>
+            <p>Because not everyone can afford to buy replacement units. So, we who can, or we who know, can try our best to help.</p>
+            <hr>
+            <p>With that said, if you have an <a href="https://github.com/SleepingAmi/modders-delight/discussions/categories/ideas" target="_blank" rel="noopener noreferrer">idea</a> or a <a href="https://github.com/SleepingAmi/modders-delight/discussions/categories/request" target="_blank" rel="noopener noreferrer">request</a> for a new guide, reach out on <a href="https://github.com/SleepingAmi/modders-delight/discussions/" target="_blank" rel="noopener noreferrer">GitHub Discussions</a>.</p>
+        </div>
+        <div style="margin-top: 4rem;">
+            <p style="color: gray;">Please note: Modders Delight is curated by <a href="https://hydraulisc.net/user/1" target="_blank" rel="noopener noreferrer">a single person</a>. Funded entirely on <a href="https://sleepingami.github.io/donate.html" target="_blank" rel="noopener noreferrer">donations</a>.</p>
+        </div>
+    </main>
+    
+    {% include footer.html %}
+
+    <script>
+        async function getUserInfo(userId) {
+            try {
+                const response = await fetch(`https://hydraulisc.net/api/${userId}`, {
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                if(!response.ok) {
+                    throw new Error('HTTP Error! Status: ' + response.status);
+                }
+                return await response.json();
+            } catch(error) {
+                console.log(error);
+                return null;
+            }
+        }
+
+        getUserInfo(1).then(data => {
+            document.querySelector("#author-name").textContent = data.user.username;
+            document.querySelector(".author-avatar").src = `https://hydraulisc.net/${data.user.pfp}`;
+
+        })
+    </script>
 </body>
 </html>

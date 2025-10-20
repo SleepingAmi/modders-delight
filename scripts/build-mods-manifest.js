@@ -12,10 +12,13 @@ function hyphensToSpacesNormalized(s) {
   return String(s).replace(/-+/g, ' ').trim();
 }
 
-// Helper: format date as dd/mm/yyyy
-function formatDate(d) {
+// Helper: format date as YYYY-MM-DD (ISO format)
+function formatISODate(d = new Date()) {
   const date = new Date(d);
-  return date.toLocaleDateString('en-GB'); // UK format = dd/mm/yyyy
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
 }
 
 function readExistingManifest() {
@@ -70,7 +73,7 @@ function readPosts(existingMap = {}) {
     const id = meta.id || slug;
 
     const existing = existingMap[id];
-    const date = existing ? existing.date : formatDate(meta.date || new Date());
+    const date = existing ? existing.date : formatISODate(meta.date || new Date());
 
     return {
       id,
