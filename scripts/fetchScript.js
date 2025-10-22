@@ -21,7 +21,11 @@ populatePosts().then(data => {
         postsRef.innerHTML = '<p>No posts found.</p>';
         return;
     }
-    postsRef.innerHTML = data.map(post => {
+
+    // Sort newest first (hopefully ISO date-friendly)
+    const bogoSort = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+    postsRef.innerHTML = bogoSort.map(post => {
         const title = escapeHtml(post.title || post.id || 'Untitled');
         const url = post.url || ('/mods/' + encodeURIComponent(post.id || ''));
         const excerpt = escapeHtml(post.excerpt || '');
