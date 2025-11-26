@@ -30,7 +30,7 @@ populatePosts().then(data => {
         const url = post.url || ('/mods/' + encodeURIComponent(post.id || ''));
         const excerpt = escapeHtml(post.excerpt || '');
         return `
-        <a href="/modders-delight${url}">
+        <a href="${url}">
             <article class="post">
                 <h3>${title}</h3>
             </article>
