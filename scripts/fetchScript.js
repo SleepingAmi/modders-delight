@@ -1,7 +1,7 @@
 const postsRef = document.getElementById('posts');
 async function populatePosts() {
     try {
-        const response = await fetch(`https://sleepingami.github.io/modders-delight/mods/index.json`, {
+        const response = await fetch(`https://mod.sleepingami.dpdns.org/mods/index.json`, {
             headers: {
                 'Accept': 'application/json'
             }
