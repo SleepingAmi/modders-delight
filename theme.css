@@ -94,7 +94,7 @@ a {
     vertical-align: middle;
     transform-origin: center center;
     text-align: center;
-    animation: spin 3.5s linear infinite;
+    animation: spin 4s steps(12, end) infinite alternate;
 }
 
 .crt-footer a {
